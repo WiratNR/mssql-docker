@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-CU10-ubuntu-22.04
+    user: root
+    container_name: some-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+      - MSSQL_PID=Express
+      - MSSQL_COLLATION=Thai_CI_AS
+    ports:
+      - 1433:1433
+    volumes:
+      - ./data:/var/opt/mssql/data
+    restart: always
